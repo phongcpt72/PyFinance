@@ -71,21 +71,25 @@ def get_data(symbol, start, end):
 
     return df.iloc[start_row:end_row+1,:]
 
-#Get the users input
-start, end, symbol = get_input()
-#Get the data
-df = get_data(symbol,start,end)
-#Get the company name
-company_name = get_company_name(symbol.upper())
+def run():
+    #Get the users input
+    start, end, symbol = get_input()
+    #Get the data
+    df = get_data(symbol,start,end)
+    #Get the company name
+    company_name = get_company_name(symbol.upper())
 
-#Display the close price
-st.header(company_name+ "Close Price\n")
-st.line_chart(df['Close'])
+    #Display the close price
+    st.header(company_name+ "Close Price\n")
+    st.line_chart(df['Close'])
 
-#Display the volume
-st.header(company_name+ "Volume\n")
-st.line_chart(df['Volume'])
+    #Display the volume
+    st.header(company_name+ "Volume\n")
+    st.line_chart(df['Volume'])
 
-#Get statistics on the data
-st.header('Data Statistics')
-st.write(df.describe())
+    #Get statistics on the data
+    st.header('Data Statistics')
+    st.write(df.describe())
+
+if __name__ == '__main__':
+    run()
